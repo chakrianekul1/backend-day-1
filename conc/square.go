@@ -7,8 +7,6 @@ import (
 func main() {
 	nums := []int{2, 4, 6, 8, 10}
 	
-	// Create a channel to communicate the results
-	// We use a buffered channel with the size of the input slice
 	results := make(chan int, len(nums))
 
 	for _, n := range nums {
