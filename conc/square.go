@@ -1,22 +1,14 @@
 package main
-
-import (
-	"fmt"
-)
-
+import "fmt"
 func main() {
-	nums := []int{2, 4, 6, 8, 10}
-	
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	results := make(chan int, len(nums))
-
-	for _, n := range nums {
+	for _, i := range nums {
 		go func(val int) {
-			square := val * val
-			results <- square
-		}(n)
+			results <- val * val
+		}(i)
 	}
-
 	for i := 0; i < len(nums); i++ {
-		fmt.Printf("Result %d: %d\n", i+1, <-results)
+		fmt.Printf("%d\n", <- results)
 	}
 }
